@@ -6,6 +6,7 @@ import store from '@/store'
 import firebase from 'firebase';
 
 import firebaseConfig from '@/config/firebase'
+import { createHead } from '@vueuse/head'
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -26,5 +27,6 @@ requireComponent.keys().forEach(function (fileName) {
 })
 
 forumApp.use(store)
+forumApp.use(createHead())
 
 forumApp.mount('#app')

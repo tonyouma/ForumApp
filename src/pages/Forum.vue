@@ -1,5 +1,10 @@
 <template>
   <div class="col-full push-top">
+    <AppHead>
+      <title>{{ forum?.name }}</title>
+      <meta property="org:title" :content="forum?.name">
+      <meta property="twitter:title" :content="forum?.name">
+    </AppHead>
     <div class="forum-header">
       <div class="forum-details">
         <h1>{{ forum.name }}</h1>
