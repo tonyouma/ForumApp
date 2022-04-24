@@ -1,48 +1,43 @@
-import HomePage from '@/pages/Home'
-import ThreadShow from '@/pages/ThreadShow'
-import ThreadCreate from '@/pages/ThreadCreate'
-import ThreadEdit from '@/pages/ThreadEdit'
+
+
 import { createRouter, createWebHistory } from 'vue-router'
-import NotFound from '@/pages/NotFound'
 import sourceData from '@/data.json'
-import Forum from '@/pages/Forum'
-import Category from '@/pages/Category'
-import Profile from '@/pages/Profile'
+
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomePage
+    component: () => import('@/pages/Home')
   },
   {
     path: '/me',
     name: 'Profile',
-    component: Profile,
+    component: () => import('@/pages/Profile'),
     meta: { toTop: true, smoothScroll: true }
   },
   {
     path: '/me/edit',
     name: 'ProfileEdit',
-    component: Profile,
+    component: () => import('@/pages/Profile'),
     props: { edit: true }
   },
   {
     path: '/category/:id',
     name: 'Category',
-    component: Category,
+    component: () => import('@/pages/Category'),
     props: true
   },
   {
     path: '/forum/:id',
     name: 'Forum',
-    component: Forum,
+    component: () => import('@/pages/Forum'),
     props: true
   },
   {
     path: '/thread/:id',
     name: 'ThreadShow',
-    component: ThreadShow,
+    component: () => import('@/pages/ThreadShow'),
     props: true,
     beforeEnter(to, from, next) {
       // check if thread exists
@@ -64,19 +59,19 @@ const routes = [
   {
     path: '/forum/:forumId/thread/create',
     name: 'ThreadCreate',
-    component: ThreadCreate,
+    component: () => import('@/pages/ThreadCreate'),
     props: true
   },
   {
     path: '/thread/:id/edit',
     name: 'ThreadEdit',
-    component: ThreadEdit,
+    component: () => import('@/pages/ThreadEdit'),
     props: true
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: NotFound,
+    component: () => import('@/pages/NotFound'),
   }
 ]
 
